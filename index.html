@@ -2,10 +2,225 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <title>sota0621のホームページ</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sota's Portfolio</title>
+    <style>
+        /* 全体のリセットとベースデザイン */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans JP', sans-serif;
+        }
+
+        body {
+            background-color: #ffffff; /* 清潔感のある白 */
+            color: #1e293b; /* 読みやすい濃いグレー */
+            line-height: 1.7;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 40px 24px;
+        }
+
+        /* ヘッダー：かっちりしたナビゲーション */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 30px;
+            border-bottom: 2px solid #0f172a; /* 太めの黒に近いラインで引き締める */
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #0f172a;
+        }
+
+        .header-sub {
+            font-size: 0.85rem;
+            color: #64748b;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        /* メインビジュアル：洗練されたミニマルモダン */
+        .hero {
+            padding: 100px 0 80px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #475569;
+            max-width: 640px;
+        }
+
+        /* セクション共通設定 */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 見出しの横にスタイリッシュな細い線を入れる */
+        section h2::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: #cbd5e1;
+            margin-left: 20px;
+        }
+
+        /* 自己紹介エリア */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .profile-text {
+            font-size: 1.05rem;
+            color: #334155;
+        }
+
+        .profile-text p {
+            margin-bottom: 20px;
+        }
+
+        /* 興味のあること（かっちりした3段グリッド） */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .interest-item {
+            background: #f8fafc; /* ほんのり明るいグレーのボックス */
+            padding: 32px;
+            border-radius: 4px; /* 丸みを抑えてカッチリ感を出す */
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+
+        /* マウスを乗せたときにカチッとシャドウが浮き出る */
+        .interest-item:hover {
+            background: #ffffff;
+            border-color: #0f172a;
+            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+        }
+
+        .interest-meta {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #2563eb; /* 知的なビジネスブルー */
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+        }
+
+        .interest-item h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .interest-item p {
+            color: #475569;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 60px 0 20px 0;
+            color: #94a3b8;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        /* スマホ対応 */
+        @media (max-width: 620px) {
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            section { padding: 60px 0; }
+        }
+    </style>
 </head>
 <body>
-    <h1>ここから新しくスタート！</h1>
-    <p>1から作り直したウェブサイトです。</p>
+
+    <div class="container">
+        <header>
+            <div class="logo">SOTA0621</div>
+            <div class="header-sub">PORTFOLIO</div>
+        </header>
+
+        <div class="hero">
+            <h1>Sota's Digital Space</h1>
+            <p>WEB技術とクリエイティブデザインの融合を目指し、日々の学びやアイデアを形にしていくための個人ウェブサイトです。</p>
+        </div>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="profile-layout">
+                <div class="profile-text">
+                    <p>はじめまして、Sota（sota0621）と申します。当サイトをご覧いただきありがとうございます。</p>
+                    <p>現在はWebページ制作の基礎を学びながら、自身のクリエイティブな関心を表現するための土台作りを行っています。</p>
+                    <p>現在はまだ明確な実績はありませんが、この場所を自らの技術的な成長ログ、および今後の制作物を格納するポートフォリオとして、丁寧かつ着実に更新を重ねていく予定です。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="interests">
+            <h2>Interests</h2>
+            <div class="interests-grid">
+                <div class="interest-item">
+                    <div class="interest-meta">01 / DESIGN</div>
+                    <h3>3D Modelling & CG</h3>
+                    <p>コンピューターグラフィックスの表現力に関心を持っています。立体的なデジタルアートの制作や技術について学んでいます。</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-meta">02 / CODE</div>
+                    <h3>Web Development</h3>
+                    <p>HTML/CSSをはじめとするフロントエンド技術の習得を目指しています。構造化された美しいコードを書くことを意識しています。</p>
+                </div>
+                <div class="interest-item">
+                    <div class="interest-meta">03 / CREATIVE</div>
+                    <h3>Digital Hobby</h3>
+                    <p>デジタルならではの利便性を活かした趣味や、ものづくりへの関心を大切にし、多角的なインプットを心がけています。</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2026 Sota0621. All Rights Reserved.</p>
+        </footer>
+    </div>
+
 </body>
 </html>
