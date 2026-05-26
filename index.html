@@ -48,10 +48,18 @@
             letter-spacing: 1px;
         }
 
-        /* メインビジュアル：洗練されたミニマルモダン */
+        /* メインビジュアル：文字と自画像を横並びにするレイアウト */
         .hero {
             padding: 100px 0 80px 0;
             border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-text {
+            flex: 1;
         }
 
         .hero h1 {
@@ -67,6 +75,20 @@
             font-size: 1.1rem;
             color: #475569;
             max-width: 640px;
+        }
+
+        /* 自画像イメージのエリア設定 */
+        .hero-image {
+            flex-shrink: 0;
+        }
+
+        .hero-image img {
+            width: 160px;  /* 画像の横幅 */
+            height: 160px; /* 画像の縦幅 */
+            object-fit: cover;
+            border-radius: 4px; /* 全体のかっちり感に合わせて丸みを最小限に */
+            border: 1px solid #cbd5e1;
+            background-color: #f8fafc; /* 万が一画像が読み込めない時の背景 */
         }
 
         /* セクション共通設定 */
@@ -111,50 +133,6 @@
             margin-bottom: 20px;
         }
 
-        /* 興味のあること（かっちりした3段グリッド） */
-        .interests-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .interest-item {
-            background: #f8fafc; /* ほんのり明るいグレーのボックス */
-            padding: 32px;
-            border-radius: 4px; /* 丸みを抑えてカッチリ感を出す */
-            border: 1px solid #e2e8f0;
-            transition: all 0.2s ease;
-        }
-
-        /* マウスを乗せたときにカチッとシャドウが浮き出る */
-        .interest-item:hover {
-            background: #ffffff;
-            border-color: #0f172a;
-            box-shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-        }
-
-        .interest-meta {
-            font-size: 0.8rem;
-            font-weight: 700;
-            color: #2563eb; /* 知的なビジネスブルー */
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 12px;
-        }
-
-        .interest-item h3 {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 12px;
-        }
-
-        .interest-item p {
-            color: #475569;
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
         /* フッター */
         footer {
             text-align: center;
@@ -164,8 +142,14 @@
             letter-spacing: 0.5px;
         }
 
-        /* スマホ対応 */
+        /* スマホ対応：画面が狭いときは縦並びにする */
         @media (max-width: 620px) {
+            .hero {
+                flex-direction: column-reverse; /* スマホでは画像を上、文字を下に配置 */
+                text-align: center;
+                padding: 60px 0;
+                gap: 24px;
+            }
             .hero h1 { font-size: 2rem; }
             .hero p { font-size: 1rem; }
             section { padding: 60px 0; }
@@ -181,8 +165,13 @@
         </header>
 
         <div class="hero">
-            <h1>Sota's Digital Space</h1>
-            <p>壁谷宗汰の個人ウェブサイトです。</p>
+            <div class="hero-text">
+                <h1>Sota's Digital Space</h1>
+                <p>壁谷宗汰の個人ウェブサイトです。</p>
+            </div>
+            <div class="hero-image">
+                <img src="画像/my-avatar.png" alt="壁谷宗汰の自画像">
+            </div>
         </div>
 
         <section id="about">
@@ -195,27 +184,6 @@
                 </div>
             </div>
         </section>
-
-        <!-- <section id="interests">
-            <h2>Interests</h2>
-            <div class="interests-grid">
-                <div class="interest-item">
-                    <div class="interest-meta">01 / DESIGN</div>
-                    <h3>3D Modelling & CG</h3>
-                    <p>コンピューターグラフィックスの表現力に関心を持っています。立体的なデジタルアートの制作や技術について学んでいます。</p>
-                </div>
-                <div class="interest-item">
-                    <div class="interest-meta">02 / CODE</div>
-                    <h3>Web Development</h3>
-                    <p>HTML/CSSをはじめとするフロントエンド技術の習得を目指しています。構造化された美しいコードを書くことを意識しています。</p>
-                </div>
-                <div class="interest-item">
-                    <div class="interest-meta">03 / CREATIVE</div>
-                    <h3>Digital Hobby</h3>
-                    <p>デジタルならではの利便性を活かした趣味や、ものづくりへの関心を大切にし、多角的なインプットを心がけています。</p>
-                </div>
-            </div>
-        </section> -->
 
         <footer>
             <p>&copy; 2026 Sota0621. All Rights Reserved.</p>
