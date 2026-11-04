@@ -1,197 +1,336 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sota's Portfolio</title>
-    <style>
-        /* 全体のリセットとベースデザイン */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans JP', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="壁谷宗汰のプロフィール・学習内容・制作物を紹介するポートフォリオサイトです。">
+  <title>Sota's Portfolio</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #64748b;
+      --line: #e2e8f0;
+      --soft: #f8fafc;
+      --accent: #315c8c;
+      --white: #fff;
+    }
 
-        body {
-            background-color: #ffffff; /* 清潔感のある白 */
-            color: #1e293b; /* 読みやすい濃いグレー */
-            line-height: 1.7;
-        }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+      line-height: 1.8;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(100% - 48px, 1000px); margin: 0 auto; }
 
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 40px 24px;
-        }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .logo { font-size: 1.05rem; font-weight: 800; letter-spacing: .12em; }
+    nav { display: flex; flex-wrap: wrap; gap: 18px; }
+    nav a { color: var(--muted); font-size: .85rem; }
+    nav a:hover { color: var(--accent); }
 
-        /* ヘッダー：かっちりしたナビゲーション */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-bottom: 30px;
-            border-bottom: 2px solid #0f172a; /* 太めの黒に近いラインで引き締める */
-        }
+    .hero {
+      min-height: 440px;
+      display: grid;
+      grid-template-columns: 1.3fr .7fr;
+      align-items: center;
+      gap: 48px;
+      padding: 76px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .eyebrow {
+      color: var(--accent);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 14px 0 20px;
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      line-height: 1.25;
+      letter-spacing: -.04em;
+    }
+    .hero-lead { max-width: 580px; color: #475569; font-size: 1.05rem; }
+    .hero-meta { margin-top: 26px; color: var(--muted); font-size: .9rem; }
+    .profile-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--soft);
+    }
+    .photo-placeholder {
+      display: grid;
+      place-items: center;
+      min-height: 280px;
+      border: 1px dashed #cbd5e1;
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--muted);
+      text-align: center;
+      padding: 24px;
+    }
 
-        .logo {
-            font-size: 1.3rem;
-            font-weight: 800;
-            letter-spacing: 2px;
-            color: #0f172a;
-        }
+    section { padding: 76px 0; border-bottom: 1px solid var(--line); }
+    .section-heading { margin-bottom: 34px; }
+    .section-heading .eyebrow { margin-bottom: 8px; }
+    h2 { font-size: 1.7rem; letter-spacing: .02em; }
+    h3 { font-size: 1.08rem; margin-bottom: 10px; }
+    .section-intro { max-width: 720px; color: var(--muted); margin-top: 10px; }
+    .about-text { max-width: 780px; }
+    .about-text p + p { margin-top: 16px; }
 
-        .header-sub {
-            font-size: 0.85rem;
-            color: #64748b;
-            font-weight: 500;
-            letter-spacing: 1px;
-        }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    .card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+    }
+    .card p { color: #475569; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: #eef3f8;
+      color: #365675;
+      font-size: .78rem;
+    }
+    .project-card { display: grid; grid-template-columns: 180px 1fr; gap: 22px; }
+    .project-image {
+      display: grid;
+      place-items: center;
+      min-height: 150px;
+      padding: 16px;
+      border-radius: 6px;
+      background: var(--soft);
+      color: var(--muted);
+      text-align: center;
+      font-size: .85rem;
+    }
+    .detail-list { padding-left: 1.2em; color: #475569; }
+    .detail-list li + li { margin-top: 6px; }
+    .timeline { display: grid; gap: 18px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .timeline-label { color: var(--accent); font-weight: 700; font-size: .9rem; }
+    .muted { color: var(--muted); }
 
-        /* メインビジュアル：文字と自画像を横並びにするレイアウト */
-        .hero {
-            padding: 100px 0 80px 0;
-            border-bottom: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-        }
+    footer { padding: 34px 0; color: var(--muted); text-align: center; font-size: .82rem; }
 
-        .hero-text {
-            flex: 1;
-        }
-
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            color: #0f172a;
-            line-height: 1.3;
-            margin-bottom: 24px;
-            letter-spacing: -0.5px;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            color: #475569;
-            max-width: 640px;
-        }
-
-        /* 自画像イメージのエリア設定 */
-        .hero-image {
-            flex-shrink: 0;
-            margin-left: 20px; /* ★画像の左側に20pxの余白を追加（左へずらす） */
-        }
-
-        .hero-image img {
-            width: 320px;  /* 画像の横幅 */
-            height: 320px; /* 画像の縦幅 */
-            object-fit: cover;
-            border-radius: 4px; /* 全体のかっちり感に合わせて丸みを最小限に */
-            border: 1px solid #cbd5e1;
-            background-color: #f8fafc; /* 万が一画像が読み込めない時の背景 */
-        }
-
-        /* セクション共通設定 */
-        section {
-            padding: 80px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #0f172a;
-            margin-bottom: 40px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-        }
-
-        /* 見出しの横にスタイリッシュな細い線を入れる */
-        section h2::after {
-            content: '';
-            flex-grow: 1;
-            height: 1px;
-            background: #cbd5e1;
-            margin-left: 20px;
-        }
-
-        /* 自己紹介エリア */
-        .profile-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        .profile-text {
-            font-size: 1.05rem;
-            color: #334155;
-        }
-
-        .profile-text p {
-            margin-bottom: 20px;
-        }
-
-        /* フッター */
-        footer {
-            text-align: center;
-            padding: 60px 0 20px 0;
-            color: #94a3b8;
-            font-size: 0.85rem;
-            letter-spacing: 0.5px;
-        }
-
-        /* スマホ対応：画面が狭いときは縦並びにする */
-        @media (max-width: 620px) {
-            .hero {
-                flex-direction: column-reverse; /* スマホでは画像を上、文字を下に配置 */
-                text-align: center;
-                padding: 60px 0;
-                gap: 24px;
-            }
-            .hero h1 { font-size: 2rem; }
-            .hero p { font-size: 1rem; }
-            section { padding: 60px 0; }
-        }
-    </style>
+    @media (max-width: 700px) {
+      .container { width: min(100% - 32px, 1000px); }
+      header { align-items: flex-start; flex-direction: column; }
+      nav { gap: 12px 16px; }
+      .hero { grid-template-columns: 1fr; padding: 54px 0; gap: 28px; }
+      .hero-visual { max-width: 280px; }
+      section { padding: 56px 0; }
+      .grid { grid-template-columns: 1fr; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-image { min-height: 180px; }
+      .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <header>
+      <a class="logo" href="#home">KABEYA SOTA</a>
+      <nav aria-label="メインナビゲーション">
+        <a href="#about">About</a>
+        <a href="#strengths">Strengths</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#interests">Interests</a>
+      </nav>
+    </header>
 
-    <div class="container">
-        <header>
-            <div class="logo">KABEYA SOTA</div>
-            <div class="header-sub">PORTFOLIO</div>
-        </header>
-
-        <div class="hero">
-            <div class="hero-text">
-                <h1>Sota's Digital Space</h1>
-                <p>壁谷宗汰の個人ウェブサイトです。</p>
-            </div>
-            <div class="hero-image">
-                <img src="画像/kabeya.jpg" alt="壁谷宗汰の自画像">
-            </div>
+    <main>
+      <!-- HOME：キャッチコピーとプロフィール写真 -->
+      <div class="hero" id="home">
+        <div>
+          <p class="eyebrow">Personal Portfolio</p>
+          <h1>学び、考え、<br>形にする。</h1>
+          <p class="hero-lead">
+            情報技術を学びながら、興味を持ったことを自分の手で試し、形にすることを大切にしています。
+          </p>
+          <p class="hero-meta">愛知工業大学 情報科学部</p>
         </div>
+        <div class="hero-visual">
+          <!-- 画像を使う場合は src を自分の画像ファイルに変更してください -->
+          <div class="photo-placeholder">プロフィール写真<br>ここに画像を配置</div>
+          <!-- 例：<img class="profile-photo" src="images/profile.jpg" alt="プロフィール写真"> -->
+        </div>
+      </div>
 
-        <section id="about">
-            <h2>自己紹介</h2>
-            <div class="profile-layout">
-                <div class="profile-text">
-                    <p>はじめまして、壁谷宗汰（かべやそうた）です。</p>
-                    <p>愛知工業大学 情報科学部に所属し、大学では情報技術を中心に学んでいます。</p>
-                    <p>特に、AIや画像処理、Webアプリケーションなどに興味があり、授業や研究活動を通じて、さまざまな技術に触れてきました。</p>
-                    <p>興味を持ったことに対して、自分で調べたり、実際に手を動かして試したりすることを大切にしています。</p>
-                    <p>このWebサイトでは、これまでの学習や制作活動、趣味などを紹介していきます。</p>
-                </div>
+      <!-- ABOUT：基本プロフィール -->
+      <section id="about">
+        <div class="section-heading">
+          <p class="eyebrow">01 / About</p>
+          <h2>自己紹介</h2>
+        </div>
+        <div class="about-text">
+          <p>はじめまして、壁谷宗汰（かべや そうた）です。愛知工業大学 情報科学部に所属し、情報技術を中心に学んでいます。</p>
+          <p>大学では、プログラミングやデータベース、AI・画像処理などの分野に触れてきました。興味を持ったことについて自分で調べ、実際に手を動かして試すことを大切にしています。</p>
+          <p>このサイトでは、大学での学びや制作物、これまでの経験、趣味などを紹介します。</p>
+        </div>
+      </section>
+
+      <!-- STRENGTHS：強みと具体的な行動 -->
+      <section id="strengths">
+        <div class="section-heading">
+          <p class="eyebrow">02 / Strengths</p>
+          <h2>自分の強み</h2>
+          <p class="section-intro">自分の特徴を、実際の経験や行動とあわせて紹介します。</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>責任感</h3>
+            <p>任された仕事に責任を持ち、最後までやり遂げることを大切にしています。</p>
+            <p class="muted">具体的なエピソード：アルバイトで担当している締め作業について記載。</p>
+          </article>
+          <article class="card">
+            <h3>継続力</h3>
+            <p>決めたことを地道に続け、必要なことに着実に取り組みます。</p>
+            <p class="muted">具体的なエピソード：学業やアルバイトで継続している取り組みを記載。</p>
+          </article>
+          <article class="card">
+            <h3>改善意識</h3>
+            <p>現状のやり方を振り返り、より良くするための方法を考えます。</p>
+            <p class="muted">具体的なエピソード：制作物で工夫・修正した点を記載。</p>
+          </article>
+          <article class="card">
+            <h3>周囲への配慮</h3>
+            <p>周囲の状況を見ながら、自分にできることを考えて行動します。</p>
+            <p class="muted">具体的なエピソード：アルバイトでの声かけや引き継ぎなどを記載。</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- SKILLS：学習した技術。経験レベルは正直に記載 -->
+      <section id="skills">
+        <div class="section-heading">
+          <p class="eyebrow">03 / Skills</p>
+          <h2>学んでいる技術</h2>
+          <p class="section-intro">授業や制作で触れた技術を掲載します。習熟度や使用経験は、実態に合わせて追記してください。</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>プログラミング・Web</h3>
+            <div class="tag-list">
+              <span class="tag">HTML</span><span class="tag">CSS</span>
+              <span class="tag">JavaScript</span><span class="tag">SQL</span>
             </div>
-        </section>
+            <p class="muted" style="margin-top:14px;">使用した授業・制作物・できることを追記。</p>
+          </article>
+          <article class="card">
+            <h3>AI・画像処理</h3>
+            <div class="tag-list">
+              <span class="tag">AI</span><span class="tag">OpenCV.js</span>
+              <span class="tag">画像処理</span><span class="tag">自然言語処理</span>
+            </div>
+            <p class="muted" style="margin-top:14px;">学習内容や実際に試したことを追記。</p>
+          </article>
+        </div>
+      </section>
 
-        <footer>
-            <p>&copy; 2026 Sota0621. All Rights Reserved.</p>
-        </footer>
-    </div>
+      <!-- PROJECTS：制作物。画像・担当範囲・工夫・結果を追加 -->
+      <section id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">04 / Projects</p>
+          <h2>制作・研究活動</h2>
+          <p class="section-intro">完成度だけでなく、制作の目的や考えたこと、工夫した点も紹介します。</p>
+        </div>
+        <article class="card project-card">
+          <div class="project-image">制作物の画面写真・スクリーンショット</div>
+          <div>
+            <h3>料理動画撮影支援Webアプリ</h3>
+            <p>スマートフォンで料理動画を撮影する際に、撮影範囲やカメラ位置を合わせやすくすることを目的としたWebアプリです。</p>
+            <ul class="detail-list" style="margin-top:12px;">
+              <li><strong>目的：</strong>撮影位置を安定させ、撮影範囲を合わせやすくする。</li>
+              <li><strong>使用技術：</strong>HTML、CSS、JavaScript、OpenCV.js（実際の使用技術に合わせて調整）</li>
+              <li><strong>工夫した点：</strong>マーカーを検出して撮影位置を確認する仕組み。</li>
+              <li><strong>今後の改善点：</strong>検出精度や使いやすさなど、実際の課題を記載。</li>
+            </ul>
+          </div>
+        </article>
+        <p class="muted" style="margin-top:18px;">※研究テーマや別の制作物がまとまったら、ここにカードを追加してください。</p>
+      </section>
 
+      <!-- EXPERIENCE：学業以外の経験 -->
+      <section id="experience">
+        <div class="section-heading">
+          <p class="eyebrow">05 / Experience</p>
+          <h2>これまでの経験</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <p class="timeline-label">アルバイト</p>
+            <div>
+              <h3>店舗での業務・締め作業</h3>
+              <p>担当している業務、継続していること、周囲のために工夫していることを具体的に記載。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-label">インターンシップ</p>
+            <div>
+              <h3>企業での仕事体験</h3>
+              <p>参加したプログラムの内容、取り組んだこと、学んだことを記載。</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <p class="timeline-label">大学・研究</p>
+            <div>
+              <h3>授業・研究活動</h3>
+              <p>印象に残っている学習や研究、発表、チームでの経験などを記載。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- INTERESTS：人柄が伝わる内容 -->
+      <section id="interests">
+        <div class="section-heading">
+          <p class="eyebrow">06 / Interests</p>
+          <h2>趣味・興味</h2>
+          <p class="section-intro">技術以外の関心も、自分らしさが伝わる範囲で紹介します。</p>
+        </div>
+        <div class="grid">
+          <article class="card">
+            <h3>音楽</h3>
+            <p>好きなアーティストや、音楽の楽しみ方などを記載。</p>
+          </article>
+          <article class="card">
+            <h3>カラオケ・ゲーム</h3>
+            <p>趣味の内容や、楽しんでいることを記載。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Sota's Portfolio</p>
+    </footer>
+  </div>
 </body>
 </html>
